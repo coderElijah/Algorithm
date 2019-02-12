@@ -8,8 +8,15 @@ package geektime.algorithm07linkedlist;
  * ProjectName:Algorithm
  * PackageName: geektime.algorithm07linkedlist
  * Date: 2019/2/12 14:29
+ *  * 1) 单链表反转
+ *  * 2) 链表中环的检测
+ *  * 3) 两个有序的链表合并
+ *  * 4) 删除链表倒数第n个结点
+ *  * 5) 求链表的中间结点
  */
 public class LinkedListAlgo {
+
+
 
     // Done: 2019/2/12 单链表反转
     public static Node reverse(Node list) {
@@ -26,6 +33,23 @@ public class LinkedListAlgo {
             current = next;
         }
         return head;
+    }
+
+    // Done: 2019/2/12 检测链表是否有环
+    public static boolean checkCircle(Node list) {
+        if (list == null) {
+            return false;
+        }
+        Node fast = list.next;
+        Node slow = list;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast.getData() == slow.getData()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void main(String[] args) {
