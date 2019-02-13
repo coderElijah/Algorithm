@@ -91,6 +91,50 @@ public class LinkedListAlgo {
         return head;
     }
 
+
+    // 删除倒数第K个结点
+    public static Node deleteLastKth(Node list, int k) {
+        Node fast = list;
+        int i = 1;
+        while (fast != null && i < k) {
+            fast = fast.next;
+            ++i;
+        }
+        if (fast == null) {
+            return list;
+        }
+
+        Node slow = list;
+        Node pre = null;
+        while (fast.next != null) {
+            fast = fast.next;
+            pre = slow;
+            slow = slow.next;
+        }
+        if (pre == null) {
+            list = list.next;
+        }else{
+            pre.next = pre.next.next;
+        }
+        return list;
+    }
+
+    // 求中间结点
+    public static Node findMiddleNode(Node list) {
+        if (list == null) {
+            return list;
+        }
+        Node fast = list;
+        Node slow = list;
+
+        while (fast.next != null && fast.next.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+
+    }
+
     public static void main(String[] args) {
         Node node1 = new Node(1, null);
         Node node2 = new Node(3, null);
