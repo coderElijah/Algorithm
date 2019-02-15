@@ -39,6 +39,7 @@ public class LinkedListAlgo {
         if (list == null) {
             return false;
         }
+
         Node fast = list.next;
         Node slow = list;
         while (fast != null && fast.next != null) {
@@ -59,34 +60,26 @@ public class LinkedListAlgo {
         if (lb == null) {
             return la;
         }
+        Node head = null;
         Node p = la;
         Node q = lb;
-        Node head = null;
         if (p.getData() < q.getData()) {
             head = p;
             p = p.next;
-        } else {
+        }else{
             head = q;
             q = q.next;
         }
-
         Node r = head;
-
         while (p != null && q != null) {
             if (p.getData() < q.getData()) {
                 r.next = p;
                 p = p.next;
-            } else {
+            }else{
                 r.next = q;
                 q = q.next;
             }
             r = r.next;
-        }
-        if (p != null) {
-            r.next = p;
-        }
-        if (q != null) {
-            r.next = q;
         }
         return head;
     }
@@ -94,16 +87,17 @@ public class LinkedListAlgo {
 
     // 删除倒数第K个结点
     public static Node deleteLastKth(Node list, int k) {
-        Node fast = list;
+        if (list == null) {
+            return list;
+        }
         int i = 1;
+        Node fast = list;
         while (fast != null && i < k) {
             fast = fast.next;
-            ++i;
         }
         if (fast == null) {
             return list;
         }
-
         Node slow = list;
         Node pre = null;
         while (fast.next != null) {
@@ -111,6 +105,7 @@ public class LinkedListAlgo {
             pre = slow;
             slow = slow.next;
         }
+
         if (pre == null) {
             list = list.next;
         }else{
@@ -124,15 +119,14 @@ public class LinkedListAlgo {
         if (list == null) {
             return list;
         }
+
         Node fast = list;
         Node slow = list;
-
-        while (fast.next != null && fast.next.next != null) {
+        if (fast.next != null && fast.next.next != null) {
             fast = fast.next.next;
             slow = slow.next;
         }
         return slow;
-
     }
 
     public static void main(String[] args) {
