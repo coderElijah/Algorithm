@@ -22,6 +22,7 @@ public class LinkedListAlgo {
         Node head = null;
         Node pre = null;
         Node current = list;
+
         while (current != null) {
             Node next = current.next;
             if (next == null) {
@@ -39,7 +40,6 @@ public class LinkedListAlgo {
         if (list == null) {
             return false;
         }
-
         Node fast = list.next;
         Node slow = list;
         while (fast != null && fast.next != null) {
@@ -60,7 +60,7 @@ public class LinkedListAlgo {
         if (lb == null) {
             return la;
         }
-        Node head = null;
+        Node head;
         Node p = la;
         Node q = lb;
         if (p.getData() < q.getData()) {
@@ -70,7 +70,9 @@ public class LinkedListAlgo {
             head = q;
             q = q.next;
         }
+
         Node r = head;
+
         while (p != null && q != null) {
             if (p.getData() < q.getData()) {
                 r.next = p;
@@ -80,6 +82,11 @@ public class LinkedListAlgo {
                 q = q.next;
             }
             r = r.next;
+        }
+        if (p != null) {
+            r.next = p;
+        }else{
+            r.next = q;
         }
         return head;
     }
@@ -98,14 +105,13 @@ public class LinkedListAlgo {
         if (fast == null) {
             return list;
         }
-        Node slow = list;
         Node pre = null;
+        Node slow = list;
         while (fast.next != null) {
             fast = fast.next;
             pre = slow;
             slow = slow.next;
         }
-
         if (pre == null) {
             list = list.next;
         }else{
@@ -119,10 +125,9 @@ public class LinkedListAlgo {
         if (list == null) {
             return list;
         }
-
         Node fast = list;
         Node slow = list;
-        if (fast.next != null && fast.next.next != null) {
+        while (fast.next != null && fast.next.next != null) {
             fast = fast.next.next;
             slow = slow.next;
         }
@@ -144,11 +149,13 @@ public class LinkedListAlgo {
         node5.next = node6;
         Node node = mergeSortedLists(node1, node4);
 
-        while (node != null) {
-            System.out.println(node.getData());
-            node = node.next;
-        }
+        Node.printAll(node);
+
+        node = findMiddleNode(node);
+        System.out.println(node.getData());
     }
+
+
 
 
     public static class Node {
@@ -158,6 +165,13 @@ public class LinkedListAlgo {
         public Node(int data, Node next) {
             this.data = data;
             this.next = next;
+        }
+
+        public static void printAll(Node node) {
+            while (node != null) {
+                System.out.println(node.getData());
+                node = node.next;
+            }
         }
 
         public int getData() {
