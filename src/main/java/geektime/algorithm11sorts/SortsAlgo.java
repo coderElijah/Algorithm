@@ -1,8 +1,10 @@
 package geektime.algorithm11sorts;
 
+import java.util.Arrays;
+
 /**
  * Description:
- * 冒泡 插入 选择
+ * 冒泡 插入 选择 希尔
  * @author elijahliu
  * @Note Talk is cheap,just show me ur code.- -!
  * ProjectName:Algorithm
@@ -66,18 +68,15 @@ public class SortsAlgo {
         }
     }
 
+    public static void shellSort(int[] a, int n) {
+
+    }
+
     public static void main(String[] args){
         int[] a = {4, 3, 2, 1, 6, 5};
 //        bubbleSort(a, a.length);
 //        insertSort(a, a.length);
         selectionSort(a, a.length);
-        printAll(a);
+        System.out.print(Arrays.toString(a));
     }
-
-    public static void printAll(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i]);
-        }
-    }
-
 }
