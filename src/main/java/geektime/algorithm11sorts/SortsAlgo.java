@@ -69,13 +69,32 @@ public class SortsAlgo {
     }
 
     public static void shellSort(int[] a, int n) {
-
+        if (n <= 1) {
+            return;
+        }
+        int step = n / 2;
+        while (step >= 1) {
+            for (int i = step; i < n; i++) {
+                int value = a[i];
+                int j = i - step;
+                for (; j >= 0; j -= step) {
+                    if (value < a[j]) {
+                        a[j + step] = a[j];
+                    }else{
+                        break;
+                    }
+                }
+                a[j + step] = value;
+            }
+            step /= step;
+        }
     }
 
     public static void main(String[] args){
         int[] a = {4, 3, 2, 1, 6, 5};
 //        bubbleSort(a, a.length);
 //        insertSort(a, a.length);
+//        selectionSort(a, a.length);
         selectionSort(a, a.length);
         System.out.print(Arrays.toString(a));
     }
