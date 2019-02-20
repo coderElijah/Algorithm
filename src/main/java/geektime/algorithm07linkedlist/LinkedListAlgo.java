@@ -22,7 +22,6 @@ public class LinkedListAlgo {
         Node head = null;
         Node pre = null;
         Node current = list;
-
         while (current != null) {
             Node next = current.next;
             if (next == null) {
@@ -60,6 +59,7 @@ public class LinkedListAlgo {
         if (lb == null) {
             return la;
         }
+
         Node head;
         Node p = la;
         Node q = lb;
@@ -70,9 +70,7 @@ public class LinkedListAlgo {
             head = q;
             q = q.next;
         }
-
         Node r = head;
-
         while (p != null && q != null) {
             if (p.getData() < q.getData()) {
                 r.next = p;
@@ -85,7 +83,8 @@ public class LinkedListAlgo {
         }
         if (p != null) {
             r.next = p;
-        }else{
+        }
+        if (q != null) {
             r.next = q;
         }
         return head;
@@ -97,8 +96,8 @@ public class LinkedListAlgo {
         if (list == null) {
             return list;
         }
-        int i = 1;
         Node fast = list;
+        int i = 1;
         while (fast != null && i < k) {
             fast = fast.next;
         }
