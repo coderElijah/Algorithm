@@ -16,7 +16,6 @@ public class SortsAlgo {
         if (n <= 1) {
             return;
         }
-
         for (int i = 0; i < n; i++) {
             boolean flag = false;
             for (int j = 0; j < n - i - 1; j++) {
@@ -28,7 +27,7 @@ public class SortsAlgo {
                 }
             }
             if (!flag) {
-                break;
+                return;
             }
         }
     }
@@ -40,14 +39,15 @@ public class SortsAlgo {
         for (int i = 1; i < n; i++) {
             int value = a[i];
             int j = i - 1;
-            for (;j >= 0; j--) {
+            // 查找要插入的位置并移动数据
+            for (; j >= 0; j--) {
                 if (value < a[j]) {
                     a[j + 1] = a[j];
                 }else{
                     break;
                 }
             }
-            a[j+1] = value;
+            a[j + 1] = value;
         }
     }
 
@@ -55,7 +55,7 @@ public class SortsAlgo {
         if (n <= 1) {
             return;
         }
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n-1; i++) {
             int minIdx = i;
             for (int j = i + 1; j < n; j++) {
                 if (a[j] < a[minIdx]) {
@@ -86,7 +86,7 @@ public class SortsAlgo {
                 }
                 a[j + step] = value;
             }
-            step /= step;
+            step /= 2;
         }
     }
 
@@ -95,7 +95,7 @@ public class SortsAlgo {
 //        bubbleSort(a, a.length);
 //        insertSort(a, a.length);
 //        selectionSort(a, a.length);
-        selectionSort(a, a.length);
+        shellSort(a, a.length);
         System.out.print(Arrays.toString(a));
     }
 }
