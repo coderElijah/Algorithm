@@ -59,16 +59,12 @@ public class LinkedListAlgo {
         if (lb == null) {
             return la;
         }
-
-        Node head;
+        Node head = null;
         Node p = la;
         Node q = lb;
         if (p.getData() < q.getData()) {
             head = p;
             p = p.next;
-        }else{
-            head = q;
-            q = q.next;
         }
         Node r = head;
         while (p != null && q != null) {
@@ -100,12 +96,13 @@ public class LinkedListAlgo {
         int i = 1;
         while (fast != null && i < k) {
             fast = fast.next;
+            ++i;
         }
         if (fast == null) {
             return list;
         }
-        Node pre = null;
         Node slow = list;
+        Node pre = null;
         while (fast.next != null) {
             fast = fast.next;
             pre = slow;
@@ -149,6 +146,10 @@ public class LinkedListAlgo {
         Node node = mergeSortedLists(node1, node4);
 
         Node.printAll(node);
+        node = reverse(node);
+        Node.printAll(node);
+        System.out.println(checkCircle(node));
+        Node.printAll(deleteLastKth(node, 3));
 
         node = findMiddleNode(node);
         System.out.println(node.getData());
