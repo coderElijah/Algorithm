@@ -18,7 +18,7 @@ public class SortsAlgo {
         }
         for (int i = 0; i < n; i++) {
             boolean flag = false;
-            for (int j = 0; j < n - i - 1; j++) {
+            for (int j = 0; j < n - 1 - i; j++) {
                 if (a[j] > a[j + 1]) {
                     int temp = a[j];
                     a[j] = a[j + 1];
@@ -39,15 +39,14 @@ public class SortsAlgo {
         for (int i = 1; i < n; i++) {
             int value = a[i];
             int j = i - 1;
-            // 查找要插入的位置并移动数据
-            for (; j >= 0; j--) {
-                if (value < a[j]) {
+            for (; j >= 0; --j) {
+                if (a[j] > value) {
                     a[j + 1] = a[j];
                 }else{
                     break;
                 }
             }
-            a[j + 1] = value;
+            a[j+1] = value;
         }
     }
 
@@ -55,16 +54,16 @@ public class SortsAlgo {
         if (n <= 1) {
             return;
         }
-        for (int i = 0; i < n-1; i++) {
-            int minIdx = i;
+        for (int i = 0; i < n; i++) {
+            int min = i;
             for (int j = i + 1; j < n; j++) {
-                if (a[j] < a[minIdx]) {
-                    minIdx = j;
+                if (a[min] > a[j]) {
+                    min = j;
                 }
             }
-            int temp = a[i];
-            a[i] = a[minIdx];
-            a[minIdx] = temp;
+            int temp = a[min];
+            a[min] = a[i];
+            a[i] = temp;
         }
     }
 
@@ -80,7 +79,7 @@ public class SortsAlgo {
                 for (; j >= 0; j -= step) {
                     if (value < a[j]) {
                         a[j + step] = a[j];
-                    }else{
+                    } else {
                         break;
                     }
                 }
