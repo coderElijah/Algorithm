@@ -5,6 +5,7 @@ import java.util.Arrays;
 /**
  * Description:
  * 冒泡 插入 选择 希尔
+ *
  * @author elijahliu
  * @Note Talk is cheap,just show me ur code.- -!
  * ProjectName:Algorithm
@@ -27,7 +28,7 @@ public class SortsAlgo {
                 }
             }
             if (!flag) {
-                return;
+                break;
             }
         }
     }
@@ -42,11 +43,11 @@ public class SortsAlgo {
             for (; j >= 0; --j) {
                 if (a[j] > value) {
                     a[j + 1] = a[j];
-                }else{
+                } else {
                     break;
                 }
             }
-            a[j+1] = value;
+            a[j + 1] = value;
         }
     }
 
@@ -54,16 +55,16 @@ public class SortsAlgo {
         if (n <= 1) {
             return;
         }
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n - 1; i++) {
             int min = i;
             for (int j = i + 1; j < n; j++) {
-                if (a[min] > a[j]) {
+                if (a[j] < a[min]) {
                     min = j;
                 }
             }
-            int temp = a[min];
-            a[min] = a[i];
-            a[i] = temp;
+            int temp = a[i];
+            a[i] = a[min];
+            a[min] = temp;
         }
     }
 
@@ -77,7 +78,7 @@ public class SortsAlgo {
                 int value = a[i];
                 int j = i - step;
                 for (; j >= 0; j -= step) {
-                    if (value < a[j]) {
+                    if (a[j] > value) {
                         a[j + step] = a[j];
                     } else {
                         break;
@@ -89,7 +90,7 @@ public class SortsAlgo {
         }
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         int[] a = {4, 3, 2, 1, 6, 5};
 //        bubbleSort(a, a.length);
 //        insertSort(a, a.length);
