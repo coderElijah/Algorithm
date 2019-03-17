@@ -1,5 +1,7 @@
 package geektime.algorithm07linkedlist;
 
+import java.util.List;
+
 /**
  * Description:
  *
@@ -59,31 +61,35 @@ public class LinkedListAlgo {
         if (lb == null) {
             return la;
         }
-        Node head = null;
-        Node p = la;
-        Node q = lb;
-        if (p.getData() < q.getData()) {
-            head = p;
-            p = p.next;
+
+        Node head;
+        if (la.getData() < lb.getData()) {
+            head = la;
+            la = la.next;
+        }else{
+            head = lb;
+            lb = lb.next;
         }
         Node r = head;
-        while (p != null && q != null) {
-            if (p.getData() < q.getData()) {
-                r.next = p;
-                p = p.next;
+        while (la != null && lb != null) {
+            if (la.getData() < lb.getData()) {
+                r.next = la;
+                la = la.next;
             }else{
-                r.next = q;
-                q = q.next;
+                r.next = lb;
+                lb = lb.next;
             }
             r = r.next;
         }
-        if (p != null) {
-            r.next = p;
+        if (la != null) {
+            r.next = la;
         }
-        if (q != null) {
-            r.next = q;
+        if (lb != null) {
+            r.next = lb;
         }
+
         return head;
+
     }
 
 
@@ -114,12 +120,13 @@ public class LinkedListAlgo {
             pre.next = pre.next.next;
         }
         return list;
+
     }
 
     // 求中间结点
     public static Node findMiddleNode(Node list) {
         if (list == null) {
-            return list;
+            return null;
         }
         Node fast = list;
         Node slow = list;
@@ -145,12 +152,12 @@ public class LinkedListAlgo {
         node5.next = node6;
         Node node = mergeSortedLists(node1, node4);
 
-        Node.printAll(node);
-        node = reverse(node);
-        Node.printAll(node);
-        System.out.println(checkCircle(node));
-        Node.printAll(deleteLastKth(node, 3));
-
+//        Node.printAll(node);
+//        node = reverse(node);
+//        Node.printAll(node);
+//        System.out.println(checkCircle(node));
+//        Node.printAll(deleteLastKth(node, 3));
+//
         node = findMiddleNode(node);
         System.out.println(node.getData());
     }
