@@ -23,11 +23,10 @@ public class BinarySearch {
         if (n <= 0) {
             return -1;
         }
-        int low = 0;
-        int high = n - 1;
+        int low = 0, high = n - 1;
         while (low <= high) {
             int mid = low + ((high - low) >> 1);
-            if (a[mid] == value) {
+            if(a[mid]==value){
                 return mid;
             } else if (a[mid] < value) {
                 low = mid + 1;
