@@ -43,8 +43,8 @@ public class LinkedListAlgo {
         }
         Node fast = list.next;
         Node slow = list;
-        while (fast != null && fast.next != null) {
-            fast = fast.next.next;
+        if (fast != null && fast.next != null) {
+            fast = fast.next;
             slow = slow.next;
             if (fast.getData() == slow.getData()) {
                 return true;
@@ -66,7 +66,7 @@ public class LinkedListAlgo {
         if (la.getData() < lb.getData()) {
             head = la;
             la = la.next;
-        }else{
+        } else {
             head = lb;
             lb = lb.next;
         }
@@ -87,9 +87,7 @@ public class LinkedListAlgo {
         if (lb != null) {
             r.next = lb;
         }
-
         return head;
-
     }
 
 
@@ -114,19 +112,19 @@ public class LinkedListAlgo {
             pre = slow;
             slow = slow.next;
         }
+
         if (pre == null) {
             list = list.next;
         }else{
             pre.next = pre.next.next;
         }
         return list;
-
     }
 
     // 求中间结点
     public static Node findMiddleNode(Node list) {
         if (list == null) {
-            return null;
+            return list;
         }
         Node fast = list;
         Node slow = list;
@@ -152,11 +150,11 @@ public class LinkedListAlgo {
         node5.next = node6;
         Node node = mergeSortedLists(node1, node4);
 
-//        Node.printAll(node);
-//        node = reverse(node);
-//        Node.printAll(node);
-//        System.out.println(checkCircle(node));
-//        Node.printAll(deleteLastKth(node, 3));
+        Node.printAll(node);
+        node = reverse(node);
+        Node.printAll(node);
+        System.out.println(checkCircle(node));
+        Node.printAll(deleteLastKth(node, 3));
 //
         node = findMiddleNode(node);
         System.out.println(node.getData());
