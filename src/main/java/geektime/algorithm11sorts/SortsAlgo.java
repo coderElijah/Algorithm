@@ -14,12 +14,12 @@ import java.util.Arrays;
  */
 public class SortsAlgo {
     public static void bubbleSort(int[] a, int n) {
-        if (n <= 1) {
+        if (n < 0) {
             return;
         }
         for (int i = 0; i < n; i++) {
             boolean flag = false;
-            for (int j = 0; j < n - 1 - i; j++) {
+            for (int j = 0; j < n - i - 1; j++) {
                 if (a[j] > a[j + 1]) {
                     int temp = a[j];
                     a[j] = a[j + 1];
@@ -34,7 +34,7 @@ public class SortsAlgo {
     }
 
     public static void insertSort(int[] a, int n) {
-        if (n <= 1) {
+        if (n < 0) {
             return;
         }
         for (int i = 1; i < n; i++) {
@@ -43,7 +43,7 @@ public class SortsAlgo {
             for (; j >= 0; --j) {
                 if (a[j] > value) {
                     a[j + 1] = a[j];
-                } else {
+                }else{
                     break;
                 }
             }
@@ -52,12 +52,12 @@ public class SortsAlgo {
     }
 
     public static void selectionSort(int[] a, int n) {
-        if (n <= 1) {
+        if (n < 0) {
             return;
         }
-        for (int i = 0; i < n - 1; i++) {
+        for (int i = 0; i < n; i++) {
             int min = i;
-            for (int j = i + 1; j < n; j++) {
+            for (int j = i + 1; j < n - 1; j++) {
                 if (a[j] < a[min]) {
                     min = j;
                 }
@@ -69,7 +69,7 @@ public class SortsAlgo {
     }
 
     public static void shellSort(int[] a, int n) {
-        if (n <= 1) {
+        if (n < 0) {
             return;
         }
         int step = n / 2;
@@ -80,7 +80,7 @@ public class SortsAlgo {
                 for (; j >= 0; j -= step) {
                     if (a[j] > value) {
                         a[j + step] = a[j];
-                    } else {
+                    }else{
                         break;
                     }
                 }

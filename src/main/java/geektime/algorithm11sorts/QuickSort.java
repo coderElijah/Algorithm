@@ -26,24 +26,22 @@ public class QuickSort {
     }
 
     private static int partition(int[] a, int p, int r) {
-        int pivot = a[r];
+        int poivt = a[r];
         int i = p;
-        for (int j = p; j < r; j++) {
-            if (a[j] < pivot) {
-                if (i == j) {
+        for (int j = p; j < r; ++j) {
+            if (a[j] < poivt) {
+                if(j==i){
                     ++i;
-                } else {
+                }else{
                     int temp = a[j];
                     a[j] = a[i];
                     a[i++] = temp;
                 }
             }
+            int temp = a[r];
+            a[r] = a[i];
+            a[i] = temp;
         }
-
-        int temp = a[r];
-        a[r] = a[i];
-        a[i] = temp;
-        System.out.println("pivot i is:" + i);
         return i;
     }
 
