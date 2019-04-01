@@ -23,7 +23,8 @@ public class BinarySearch {
         if (n <= 0) {
             return -1;
         }
-        int low = 0, high = n - 1;
+        int low = 0;
+        int high = n - 1;
         while (low <= high) {
             int mid = low + ((high - low) >> 1);
             if(a[mid]==value){
@@ -45,9 +46,6 @@ public class BinarySearch {
      * @return
      */
     static int bsearch2(int[] a, int n, int value) {
-        if (n <= 0) {
-            return -1;
-        }
         return bsearch2narlly(a, 0, n - 1, value);
     }
     static int bsearch2narlly(int[]a,int low ,int high,int value){
@@ -57,10 +55,11 @@ public class BinarySearch {
         int mid = low + ((high - low) >> 1);
         if (a[mid] == value) {
             return mid;
-        } else if (a[mid] > value) {
-            return bsearch2narlly(a, low, mid - 1, value);
-        }else{
+        } else if (a[mid] < value) {
             return bsearch2narlly(a, mid + 1, high, value);
+
+        }else{
+            return bsearch2narlly(a, low, mid - 1, value);
         }
     }
 
@@ -127,7 +126,4 @@ public class BinarySearch {
         System.out.println(bsearch(a, a.length, 19));
         System.out.println(bsearch2(a, a.length, 55));
     }
-
-
-
 }
