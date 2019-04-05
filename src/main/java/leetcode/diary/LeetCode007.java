@@ -1,4 +1,4 @@
-package leetcode.interview;
+package leetcode.diary;
 
 /**
  * Description:
@@ -9,7 +9,7 @@ package leetcode.interview;
  * PackageName: leetcode.interview
  * Date: 2019/4/5 22:39
  */
-public class Reverse {
+public class LeetCode007 {
     public int reverse(int x) {
         int reverse = 0;
         while (x != 0) {
