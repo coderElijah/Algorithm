@@ -1,4 +1,4 @@
-package leetcode.interview;
+package leetcode.interview.string;
 
 /**
  * Description:
