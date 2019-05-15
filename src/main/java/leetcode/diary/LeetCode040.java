@@ -12,11 +12,11 @@ import java.util.List;
  * @Note Talk is cheap,just show me ur code.- -!
  * ProjectName:Algorithm
  * PackageName: leetcode.diary
- * Date: 2019/5/15 16:52
+ * Date: 2019/5/15 19:27
  */
-public class LeetCode039 {
+public class LeetCode040 {
     public List<List<Integer>> result = new LinkedList<>();
-    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         Arrays.sort(candidates);
         combination(0, candidates, new ArrayList<>(), target);
         return result;
@@ -30,6 +30,9 @@ public class LeetCode039 {
             return;
         }
         for (int start = i; start < candidates.length; start++) {
+            if (start > i && candidates[start - 1] == candidates[start]) {
+                continue;
+            }
             sumList.add(candidates[start]);
             combination(start+1, candidates, sumList, target - candidates[start]);
             sumList.remove(sumList.size() - 1);
